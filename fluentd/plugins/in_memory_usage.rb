@@ -1,5 +1,6 @@
 require 'fluent/plugin/input'
 require 'fluent/version'
+require 'leak_profiler'
 
 module Fluent::Plugin
   class MemoryUsageInput < Input
@@ -8,21 +9,9 @@ module Fluent::Plugin
     def start
       super
 
-      pid = Process.pid
-
-      Thread.new do
-        i = 0
-        File.open("/fluentd/tmp/memory-usage-#{Fluent::VERSION}.csv", 'w') do |f|
-          f.puts('elapsed [sec],memory usage (rss) [MB]')
-
-          loop do
-            rss = Integer(`ps -o rss= -p #{pid}`) / 1024.0
-            f.puts("#{i},#{rss}")
-            i += 1
-            sleep 1
-          end
-        end
-      end
+      profiler = LeakProfiler.new(output_dir: '/fluentd/tmp')
+      profiler.report(interval: 60, filename: "memory_profiler-#{Fluent::VERSION}.log")
+      profiler.report_rss(interval: 1, filename: "memory_usage_rss-#{Fluent::VERSION}.csv")
     end
   end
 end
