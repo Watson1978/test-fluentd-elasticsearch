@@ -9,10 +9,31 @@ services:
       - "./fluentd/conf:/fluentd/etc"
       - "./fluentd/plugins:/fluentd/plugins"
       - "./fluentd/tmp:/fluentd/tmp"
+      - "./fluentd/logs:/fluentd/logs"
 
     depends_on:
       elasticsearch:
         condition: service_healthy
+
+  # log-generator:
+  #   image: registry.api.weibo.com/kube/busybox:latest
+  #   command:
+  #     - /bin/sh
+  #     - -c
+  #     - |
+  #       truncate -s 0 /fluentd/logs/data.log /fluentd/logs/request.log
+  #       for i in $(seq 1 1 3000); do
+  #         date -Ins >> /fluentd/logs/data.log
+  #       done
+  #       while true; do
+  #         cat /fluentd/logs/data.log >> /fluentd/logs/request.log
+  #         sleep 1
+  #       done
+  #   volumes:
+  #     - "./fluentd/logs:/fluentd/logs"
+  #   depends_on:
+  #     fluentd:
+  #       condition: service_started
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.28
