@@ -1,4 +1,4 @@
-FROM fluent/fluentd:v1.17-debian-1
+FROM fluent/fluentd:v1.16-debian-1
 
 USER root
 
