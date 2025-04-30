@@ -3,13 +3,13 @@ services:
   fluentd:
     build:
       context: ./fluentd
-      dockerfile: fluentd-1_15.dockerfile
-      # dockerfile: fluentd-1_15-es-5_1.dockerfile
-      # dockerfile: fluentd-1_16.dockerfile
-      # dockerfile: fluentd-1_17.dockerfile
-      # dockerfile: fluentd-1_17-es-5_1.dockerfile
-      # dockerfile: fluentd-1_18.dockerfile
-      # dockerfile: fluentd-1_19-dev.dockerfile
+      dockerfile: fluentd-1.15+es-5.2.5.dockerfile
+      # dockerfile: fluentd-1.15+es-5.1.5.dockerfile
+      # dockerfile: fluentd-1.16+es-5.2.5.dockerfile
+      # dockerfile: fluentd-1.17+es-5.2.5.dockerfile
+      # dockerfile: fluentd-1.17-es-5.1.5.dockerfile
+      # dockerfile: fluentd-1.18+es-5.2.5.dockerfile
+      # dockerfile: fluentd-1.19.dev+es-5.2.5.dockerfile
     volumes:
       - "./fluentd/conf:/fluentd/etc"
       - "./fluentd/plugins:/fluentd/plugins"
