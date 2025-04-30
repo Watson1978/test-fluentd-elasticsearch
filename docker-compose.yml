@@ -4,8 +4,10 @@ services:
     build:
       context: ./fluentd
       dockerfile: fluentd-1_15.dockerfile
+      # dockerfile: fluentd-1_15-es-5_1.dockerfile
       # dockerfile: fluentd-1_16.dockerfile
       # dockerfile: fluentd-1_17.dockerfile
+      # dockerfile: fluentd-1_17-es-5_1.dockerfile
       # dockerfile: fluentd-1_18.dockerfile
       # dockerfile: fluentd-1_19-dev.dockerfile
     volumes:
