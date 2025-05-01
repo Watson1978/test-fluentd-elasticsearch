@@ -19,7 +19,7 @@ services:
       - "./fluentd/conf:/fluentd/etc"
       - "./fluentd/plugins:/fluentd/plugins"
       - "./fluentd/tmp:/fluentd/tmp"
-      - "./fluentd/logs:/fluentd/logs"
+      - "./fluentd/logs:/var/log/fluent"
 
     depends_on:
       elasticsearch:
