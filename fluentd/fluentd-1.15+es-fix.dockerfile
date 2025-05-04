@@ -10,7 +10,7 @@ RUN gem install leak_profiler --no-document --version 0.4.0
 
 RUN git clone https://github.com/Watson1978/fluent-plugin-elasticsearch.git && \
     cd fluent-plugin-elasticsearch && \
-    git checkout 2be17ad && \
+    git checkout a800e37 && \
     gem build fluent-plugin-elasticsearch.gemspec && \
     gem install fluent-plugin-elasticsearch-*.gem
 
