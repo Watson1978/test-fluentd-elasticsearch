@@ -4,6 +4,8 @@ services:
     build:
       context: ./fluentd
       dockerfile: fluentd-1.15+es-fix.dockerfile
+      # dockerfile: fluentd-1.15+es-master.dockerfile
+
       # dockerfile: fluentd-1.15+es-5.1.5.dockerfile
       # dockerfile: fluentd-1.15+es-5.2.0.dockerfile
       # dockerfile: fluentd-1.15+es-5.2.1.dockerfile
